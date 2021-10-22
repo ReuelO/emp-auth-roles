@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 # emp-auth-roles
 
-Library management system
-=======
-# emp-auth-roles
-
-Library management system
->>>>>>> git trouble
+Role authentication system with Express, MySQL and PassportJS

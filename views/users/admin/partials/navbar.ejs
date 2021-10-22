@@ -1,0 +1,37 @@
+<header class="mb-auto">
+  <div>
+    <h3 class="float-md-start mb-0">
+      <a
+        class="text-white text-decoration-none"
+        href="/admin/<%= user.user_id %>"
+        id="logo"
+      >
+        EMP Auth
+      </a>
+    </h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+      <a class="nav-link" href="/admin/<%= user.user_id %>" id="dashboard">
+        Dashboard
+      </a>
+      <a
+        class="nav-link"
+        href="/admin/<%= user.user_id %>/profile"
+        id="profile"
+      >
+        Profile
+      </a>
+      <a class="nav-link text-danger" href="/logout">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Show active link
+  var locationIndex = window.location.href;
+
+  if (locationIndex.indexOf("profile") > -1) {
+    $("#profile").toggleClass("link-white active");
+  } else {
+    $("#dashboard").toggleClass("link-white active");
+  }
+</script>

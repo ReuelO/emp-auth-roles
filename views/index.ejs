@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <%- include ./partials/header %>
+
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="d-flex w-100 h-100 py-2 px-5 mx-auto flex-column">
+      <%- include ./partials/navbar %>
+
+      <main class="p-0">
+        <h1 class="display-1">EMP Auth + Roles</h1>
+        <p class="lead">
+          Authentication system built using Express, MySQL and PassportJS
+        </p>
+
+        <p class="lead">
+          <a
+            href="/register"
+            class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+            >Get Started</a
+          >
+        </p>
+      </main>
+
+      <%- include ./partials/footer %>
+    </div>
+  </body>
+</html>

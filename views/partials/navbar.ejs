@@ -1,0 +1,25 @@
+<header class="mb-auto">
+  <div>
+    <h3 class="float-md-start mb-0">
+      <a class="text-white text-decoration-none" href="/"> EMP Auth + Roles </a>
+    </h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+      <a class="nav-link" href="/" id="home">Home</a>
+      <a class="nav-link" href="/register" id="register">Register</a>
+      <a class="nav-link" href="/login" id="login">Login</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Show active link
+  var locationIndex = window.location.href;
+
+  if (locationIndex.indexOf("register") > -1) {
+    $("#register").toggleClass("link-white active");
+  } else if (locationIndex.indexOf("login") > -1) {
+    $("#login").toggleClass("link-white active");
+  } else {
+    $("#home").toggleClass("link-white active");
+  }
+</script>

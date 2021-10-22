@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <% include ../../partials/header %>
+
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="d-flex w-100 h-100 py-2 px-5 mx-auto flex-column">
+      <%- include ./partials/navbar %>
+
+      <main class="p-0">
+        <%- include ../../partials/flash_messages %>
+        <h1>EMP Auth</h1>
+        <p class="lead">
+          Authentication system built using Express, MySQL and PassportJS
+        </p>
+        <hr class="my-3" />
+
+        <div class="card bg-dark text-white text-start m-3 rounded shadow-lg">
+          <div class="card-body p-5">
+            <h3 class="card-title">User Details</h3>
+            <% data.forEach(function(one){ %>
+            <p class="card-text lead">
+              ID: <b><%= one.user_id %></b> <br />
+              Name: <% if(one.name){ %>
+              <b><%= one.name %></b>
+              <% } else { %>
+              <u>null</u>
+              <% } %> <br />
+              Username: <b><%= one.username %></b> <br />
+              Email: <% if(one.email){ %>
+              <b><%= one.email %></b>
+              <% } else { %>
+              <u>null</u>
+              <% } %> <br />
+              Phone: <% if(one.phone){ %>
+              <b><%= one.phone %></b>
+              <% } else { %>
+              <u>null</u>
+              <% } %> <br />
+            </p>
+            <% }); %>
+            <a
+              href="/users/<%= user.user_id %>/profile"
+              class="btn btn-outline-light fw-bold border-light"
+              >View Profile</a
+            >
+          </div>
+        </div>
+      </main>
+
+      <%- include ../../partials/footer %>
+    </div>
+  </body>
+</html>

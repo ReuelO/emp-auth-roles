@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <%- include ./partials/header %>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="d-flex w-100 h-100 py-2 px-5 mx-auto flex-column">
+      <%- include ./partials/navbar %>
+
+      <main class="p-0 text-center">
+        <nav class="small breadcrumb m-3">
+          <a class="breadcrumb-item" href="/users/<%= user.user_id %>">
+            Dashboard
+          </a>
+          <span class="breadcrumb-item active"> <%= heading %> </span>
+        </nav>
+
+        <div
+          class="container-fluid p-5 border border-2 border-light"
+          style="max-width: 800px"
+        >
+          <h3 class="text-center text-white p-4">
+            <i class="fa fa-user-check"></i> <%= heading %>
+          </h3>
+
+          <%- include ../../partials/flash_messages %> <%
+          data.forEach(function(one){ %>
+          <form
+            class="form text-start"
+            action="/users/<%= user.user_id %>/profile"
+            method="POST"
+            oninput='confirm.setCustomValidity(confirm.value != password.value ? "Passwords do not match." : "")'
+          >
+            <div class="row">
+              <div class="col-md mb-3">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="name"
+                  value="<%= one.name %>"
+                  autofocus
+                  required
+                />
+              </div>
+              <div class="col-md mb-3">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  value="<%= one.username %>"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md mb-3">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  value="<%= one.email %>"
+                />
+              </div>
+              <div class="col-md mb-3">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="phone"
+                  id="phone"
+                  value="<%= one.phone %>"
+                />
+              </div>
+            </div>
+            <div class="col-md mb-3">
+              <button type="button" class="btn btn-danger" id="change">
+                Change password
+              </button>
+              <div id="pass">
+                <div class="col-md mb-3">
+                  <label for="password">Change Password</label>
+                  <input type="password" class="form-control" name="password" />
+                </div>
+                <div class="col-md mb-3">
+                  <label for="confirm">Confirm Password</label>
+                  <input type="password" class="form-control" name="confirm" />
+                </div>
+              </div>
+              <script>
+                $(document).ready(function () {
+                  $("#pass").hide();
+                  $("#change").click(function () {
+                    $(this).hide();
+                    $("#pass").show();
+                  });
+                });
+              </script>
+            </div>
+
+            <button type="submit" class="w-100 btn btn-lg btn-warning mb-3">
+              Update Profile
+            </button>
+          </form>
+          <% }); %>
+        </div>
+      </main>
+
+      <%- include ../../partials/footer %>
+    </div>
+  </body>
+</html>

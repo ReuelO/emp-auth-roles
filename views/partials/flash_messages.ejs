@@ -1,0 +1,44 @@
+<% if (success.length > 0) { %>
+<div
+  class="
+    small
+    p-2
+    m-2
+    alert alert-success
+    text-center
+    alert-dismissible
+    fade
+    show
+  "
+  id="auto-close"
+>
+  <%= success %>
+</div>
+<% } else if (error.length > 0) { %>
+<div
+  class="
+    small
+    p-2
+    m-2
+    alert alert-danger
+    text-center
+    alert-dismissible
+    fade
+    show
+  "
+  id="auto-close"
+>
+  <%= error %>
+</div>
+<% } %>
+
+<script>
+  // Alert message auto-close
+  $(document).ready(function () {
+    $(".alert-dismissible")
+      .delay(3000)
+      .slideUp(200, function () {
+        $(this).alert("close");
+      });
+  });
+</script>

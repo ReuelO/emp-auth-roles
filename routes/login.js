@@ -21,7 +21,7 @@ module.exports = function (app, passport) {
         `User ${user.user_id} (${user.username}:${user.role}) logged in!`
       );
 
-      if (req.body.reuser) {
+      if (req.body.remember) {
         req.session.cookie.maxAge = 1000 * 60 * 3 * 12;
       } else {
         req.session.cookie.expires = false;
@@ -49,7 +49,7 @@ module.exports = function (app, passport) {
         `User ${user.user_id} (${user.username}:${user.role}) logged in!`
       );
 
-      if (req.body.reuser) {
+      if (req.body.remember) {
         req.session.cookie.maxAge = 1000 * 60 * 3 * 12;
       } else {
         req.session.cookie.expires = false;

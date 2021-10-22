@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
-  <%- include ../../partials/header %>
+  <%- include ./partials/header %>
   <body class="d-flex h-100 text-center text-white bg-dark">
-    <div class="d-flex w-100 h-100 py-2 px-5 mx-auto flex-column">
+    <div class="d-flex w-100 h-100 mx-auto flex-column">
       <%- include ./partials/navbar %>
 
       <main class="p-0">
-        <h1>EMP Auth</h1>
-        <p class="lead">
-          Authentication system built using Express, MySQL and PassportJS
-        </p>
-        <hr class="my-3" />
+        <div class="container-fluid">
+          <div class="row">
+            <%- include ./partials/sidebar %>
 
-        <%- include ../../partials/flash_messages %>
+            <div class="col-md-9 ms-sm-auto col-lg-10">
+              <div class="py-2 mb-3">
+                <h1 class="h2"><%= heading %></h1>
+                <hr class="my-2" />
+              </div>
 
-        <div class="row m-2">
-          <% users.forEach(function(rows){ %>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 mb-4">
-            <a
-              href="/admin/<%= user.user_id %>/users"
-              class="text-dark text-decoration-none"
-            >
-              <div class="card bg-white shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div
-                        class="
-                          text-xs
-                          font-weight-bold
-                          text-dark text-uppercase
-                          mb-1
-                        "
-                      >
-                        Users
+              <div class="container-fluid pb-5">
+                <%- include ../../partials/flash_messages %>
+
+                <h2 class="text-start mx-4">Modules</h2>
+                <div class="row m-2">
+                  <% users.forEach(function(rows){ %>
+                  <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 mb-4">
+                    <a
+                      href="/admin/<%= user.user_id %>/users"
+                      class="text-dark text-decoration-none"
+                    >
+                      <div class="card bg-white shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div
+                                class="
+                                  text-xs
+                                  font-weight-bold
+                                  text-dark text-uppercase
+                                  mb-1
+                                "
+                              >
+                                Users
+                              </div>
+                              <div class="h5 mb-0 font-weight-bold text-dark">
+                                <%= rows.count %>
+                              </div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-pen-alt fa-2x text-gray-100"></i>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="h5 mb-0 font-weight-bold text-dark">
-                        <%= rows.count %>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-pen-alt fa-2x text-gray-100"></i>
-                    </div>
+                    </a>
                   </div>
+                  <% }); %>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
-          <% }); %>
         </div>
       </main>
 

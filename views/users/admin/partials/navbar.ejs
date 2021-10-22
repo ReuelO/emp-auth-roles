@@ -1,37 +1,41 @@
-<header class="mb-auto">
-  <div>
-    <h3 class="float-md-start mb-0">
-      <a
-        class="text-white text-decoration-none"
-        href="/admin/<%= user.user_id %>"
-        id="logo"
-      >
-        EMP Auth
-      </a>
-    </h3>
-    <nav class="nav nav-masthead justify-content-center float-md-end">
-      <a class="nav-link" href="/admin/<%= user.user_id %>" id="dashboard">
-        Dashboard
-      </a>
-      <a
-        class="nav-link"
-        href="/admin/<%= user.user_id %>/profile"
-        id="profile"
-      >
-        Profile
-      </a>
-      <a class="nav-link text-danger" href="/logout">Logout</a>
-    </nav>
+<header
+  class="
+    navbar navbar-dark
+    sticky-top
+    bg-dark
+    flex-md-nowrap
+    py-2
+    px-3
+    m-0
+    shadow
+  "
+>
+  <a
+    class="navbar-brand col-md-3 col-lg-2 me-0 px-3"
+    href="/admin/<%= user.user_id %>"
+  >
+    EMP Auth
+  </a>
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input
+    class="form-control form-control-dark w-100"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link text-danger h6 px-3" href="/logout">Logout</a>
+    </div>
   </div>
 </header>
-
-<script>
-  // Show active link
-  var locationIndex = window.location.href;
-
-  if (locationIndex.indexOf("profile") > -1) {
-    $("#profile").toggleClass("link-white active");
-  } else {
-    $("#dashboard").toggleClass("link-white active");
-  }
-</script>

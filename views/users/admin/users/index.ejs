@@ -2,100 +2,134 @@
 <html lang="en" class="h-100">
   <%- include ../../../partials/header %>
   <body class="d-flex h-100 text-center text-white bg-dark">
-    <div class="d-flex w-100 h-100 py-2 px-5 mx-auto flex-column">
+    <div class="d-flex w-100 h-100 mx-auto flex-column">
       <%- include ../partials/navbar %>
 
-      <main class="p-0 text-center">
-        <%- include ../../../partials/flash_messages %>
+      <main class="p-0">
+        <div class="container-fluid">
+          <div class="row">
+            <%- include ../partials/sidebar %>
 
-        <nav class="small breadcrumb m-3">
-          <a class="breadcrumb-item" href="/admin/<%= user.user_id %>">
-            Dashboard
-          </a>
-          <span class="breadcrumb-item active"> <%= page %> </span>
-        </nav>
+            <div class="col-md-9 ms-sm-auto col-lg-10">
+              <div class="py-2 mb-3">
+                <h1 class="h2"><%= heading %></h1>
+                <hr class="my-2" />
+              </div>
 
-        <div class="container-fluid pb-5">
-          <div class="card bg-dark text-white text-start shadow-lg mb-4 p-3">
-            <div class="p-2 m-2">
-              <h4 class="mb-0 text-gray-800">
-                <i class="fa fa-pen-alt"></i> <%= page %>
-              </h4>
-            </div>
-            <div class="card-body">
-              <%- include ../../../partials/flash_messages %>
+              <div class="container-fluid pb-5">
+                <nav class="small breadcrumb m-3">
+                  <a
+                    class="breadcrumb-item text-white text-decoration-none"
+                    href="/admin/<%= user.user_id %>"
+                  >
+                    Dashboard
+                  </a>
+                  <span class="breadcrumb-item active"><%= page %></span>
+                </nav>
 
-              <a
-                class="btn btn-success mb-3"
-                href="/admin/<%= user.user_id %>/users/add"
-              >
-                <i class="fa fa-plus-circle"></i>
-                Add New
-              </a>
+                <div class="container-fluid pb-5">
+                  <%- include ../../../partials/flash_messages %>
 
-              <% if(data.length > 0) {%>
-              <table
-                class="small display compact text-start text-white table"
-                id="table"
-                width="100%"
-                cellspacing="0"
-              >
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Email Address</th>
-                    <th>Phone</th>
-                    <th>Created</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% data.forEach(function(one){ %>
-                  <tr>
-                    <td><%= one.user_id %></td>
-                    <td><%= one.name %></td>
-                    <td><%= one.username %></td>
-                    <td><%= one.role %></td>
-                    <td><%= one.email %></td>
-                    <td><%= one.phone %></td>
-                    <td><%= one.created.toLocaleString('en-CA') %></td>
-                    <td>
-                      <div class="btn-group">
-                        <a
-                          class="btn btn-sm btn-outline-primary"
-                          href="/admin/<%= user.user_id %>/users/<%= one.user_id %>"
-                        >
-                          <div class="fa fa-edit"></div>
-                        </a>
-                        <a
-                          class="btn btn-sm btn-outline-danger delete"
-                          href="#"
-                          data-bs-toggle="modal"
-                          data-bs-target="#deleteModal"
-                          data-bs-id="<%= one.user_id %>"
-                        >
-                          <div class="fa fa-trash"></div>
-                        </a>
-                        <!-- <script>
+                  <div
+                    class="
+                      card
+                      bg-dark
+                      text-white text-start
+                      shadow-lg
+                      mb-2
+                      p-3
+                    "
+                  >
+                    <div class="p-2 m-2">
+                      <h4 class="mb-0 text-gray-800">
+                        <i class="fa fa-pen-alt"></i> <%= page %>
+                      </h4>
+                    </div>
+                    <div class="card-body">
+                      <a
+                        class="btn btn-success mb-3"
+                        href="/admin/<%= user.user_id %>/users/add"
+                      >
+                        <i class="fa fa-plus-circle"></i>
+                        Add New
+                      </a>
+
+                      <% if(data.length > 0) {%>
+                      <table
+                        class="
+                          small
+                          display
+                          compact
+                          text-start text-white
+                          table
+                        "
+                        id="table"
+                        width="100%"
+                        cellspacing="0"
+                      >
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Email Address</th>
+                            <th>Phone</th>
+                            <th>Created</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% data.forEach(function(one){ %>
+                          <tr>
+                            <td><%= one.user_id %></td>
+                            <td><%= one.name %></td>
+                            <td><%= one.username %></td>
+                            <td><%= one.role %></td>
+                            <td><%= one.email %></td>
+                            <td><%= one.phone %></td>
+                            <td><%= one.created.toLocaleString('en-CA') %></td>
+                            <td>
+                              <div class="btn-group">
+                                <a
+                                  class="btn btn-sm btn-outline-primary"
+                                  href="/admin/<%= user.user_id %>/users/<%= one.user_id %>"
+                                >
+                                  <div class="fa fa-edit"></div>
+                                </a>
+                                <a
+                                  class="btn btn-sm btn-outline-danger delete"
+                                  href="#"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#deleteModal"
+                                  data-bs-id="<%= one.user_id %>"
+                                >
+                                  <div class="fa fa-trash"></div>
+                                </a>
+                                <!-- <script>
                     $(document).ready(function () {
                       var id2 = $(".delete").data("bs-id");
                       console.log("id2: ", id2);
                     });
                   </script> -->
+                              </div>
+                            </td>
+                          </tr>
+                          <% }); %>
+                        </tbody>
+                      </table>
+                      <% } else { %>
+                      <div
+                        class="small alert alert-info text-center"
+                        role="alert"
+                      >
+                        No <%= heading %> available
                       </div>
-                    </td>
-                  </tr>
-                  <% }); %>
-                </tbody>
-              </table>
-              <% } else { %>
-              <div class="small alert alert-info text-center" role="alert">
-                No <%= heading %> available
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <% } %>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
     res.render("./users/admin/users", {
       title: "EMP Auth + Roles",
       user: req.user,
-      heading: "Library",
+      heading: "Users",
       page: "Users",
       data: rows,
     });
@@ -22,7 +22,7 @@ router.get("/add", function (req, res) {
     res.render("./users/admin/users/add", {
       title: "EMP Auth + Roles",
       heading: "Users",
-      page: "Add user",
+      page: "Add User",
       user: req.user,
       data: rows,
     });
@@ -68,7 +68,7 @@ router.get("/:userId", function (req, res) {
     res.render("./users/admin/users/edit", {
       title: "EMP Auth + Roles",
       heading: "Users",
-      page: "user Details",
+      page: "User Details",
       user: req.user,
       data: rows,
     });

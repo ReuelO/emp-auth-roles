@@ -40,8 +40,8 @@ npm start
 - [x] Simple, clean UI
 - [x] Secure sign up and sign in (password is encrypted)
 - [x] Multiple user roles: ADMIN and USER
-- [x] User can edit profile (add other user details)
-- [x] User can change password
+- [x] Both can edit profile (add other user details)
+- [x] Both can change password
 - [x] Admin can add, edit and delete users
 
 #### 💪 Enjoy!

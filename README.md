@@ -1,4 +1,4 @@
-# EMP Auth
+# EMP Auth + Roles
 
 Role authentication system built using Express, MySQL and PassportJS
 
